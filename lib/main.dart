@@ -58,22 +58,35 @@ class _MyHomePageState extends State<MyHomePage> {
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 itemCount: 15,
-                itemBuilder: (BuildContext context, int index) =>
-                    Container(
-                      // set size cho từng item . Nếu horizotal thì cần width , vertical : height
+                itemBuilder: (BuildContext context, int index) => Container(
+                  // set size cho từng item . Nếu horizotal thì cần width , vertical : height
                   width: 130,
                   height: 0,
-                  color: Colors.blue,
-                  child: ListTile(
-                    leading: Icon(Icons.access_alarm_rounded),
-                    title: Transform.translate(
-                      offset: Offset(-25, 0),
-                      child: Text('Somesadas' , style: TextStyle(fontSize: 12),),
+                  child: Card(
+                    shape: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: BorderSide(
+                            width: 1.0, color: Colors.lightBlue.shade50)),
+                    color: Colors.red,
+                    child: Center(
+                      child: ListTile(
+                        contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                        leading: Transform.translate(
+                            offset: Offset(15, -8),
+                            child: Icon(Icons.access_alarm_rounded)),
+                        title: Transform.translate(
+                          offset: Offset(-15, -6),
+                          child: Text(
+                            'Somesadas',
+                            style: TextStyle(fontSize: 12),
+                          ),
+                        ),
+                        onTap: () {
+                          print(index.toString());
+                          FocusScope.of(context).unfocus();
+                        },
+                      ),
                     ),
-                    onTap: () {
-                      print(index.toString());
-                      FocusScope.of(context).unfocus();
-                    },
                   ),
                 ),
               ),
